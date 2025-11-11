@@ -44,4 +44,10 @@ public class PersonajeServiceImpl implements PersonajeService {
         List<PersonajeEntity> personajeEntity = personajeJPARepository.findByEdadGreaterThanEqualAndEdadLessThanEqual(edadDesde, edadHasta);
         return PersonajeEntity.toDomain(personajeEntity);
     }
+
+    @Override
+    public Personaje save(Personaje personaje) {
+        personajeJPARepository.save(PersonajeEntity.toEntity(personaje));
+        return personaje;
+    }
 }

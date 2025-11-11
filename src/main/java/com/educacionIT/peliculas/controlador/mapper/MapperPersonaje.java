@@ -1,5 +1,6 @@
 package com.educacionIT.peliculas.controlador.mapper;
 
+import com.educacionIT.peliculas.controlador.dto.request.PersonajeDtoRequest;
 import com.educacionIT.peliculas.controlador.dto.response.PersonajeDtoResponse;
 import com.educacionIT.peliculas.core.dominio.Personaje;
 import org.springframework.stereotype.Component;
@@ -28,4 +29,13 @@ public class MapperPersonaje {
         return personajes.stream().map(this::toDto).toList();
     }
 
+
+    public Personaje toDominio(PersonajeDtoRequest personajeDtoRequest) {
+        return Personaje.builder()
+                .nombre(personajeDtoRequest.getNombre())
+                .edad(personajeDtoRequest.getEdad())
+                .peso(personajeDtoRequest.getPeso())
+                .historia(personajeDtoRequest.getHistoria())
+                .build();
+    }
 }

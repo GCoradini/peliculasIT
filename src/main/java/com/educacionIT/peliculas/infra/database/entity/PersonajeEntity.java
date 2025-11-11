@@ -2,7 +2,10 @@ package com.educacionIT.peliculas.infra.database.entity;
 
 import com.educacionIT.peliculas.core.dominio.Personaje;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -10,6 +13,9 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "personajes")
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class PersonajeEntity {
 
     @Id
@@ -38,4 +44,12 @@ public class PersonajeEntity {
         return personajeEntityList.stream().map(PersonajeEntity::toDomain).toList();
     }
 
+    public static PersonajeEntity toEntity(Personaje personaje) {
+        return PersonajeEntity.builder()
+                .nombre(personaje.getNombre())
+                .edad(personaje.getEdad())
+                .peso(personaje.getPeso())
+                .historia(personaje.getHistoria())
+                .build();
+    }
 }

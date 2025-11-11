@@ -13,4 +13,5 @@ public interface PersonajeService {
 
     List<Personaje> findBetweenAge(Integer edadDesde, Integer edadHasta);
 
+    Personaje save(Personaje personaje);
 }

@@ -6,4 +6,6 @@ import java.util.List;
 public interface GeneroService {
 
     List<Genero> findAll();
+
+    Genero save(Genero genero);
 }

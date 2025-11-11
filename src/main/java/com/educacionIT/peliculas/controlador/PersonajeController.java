@@ -1,7 +1,11 @@
 package com.educacionIT.peliculas.controlador;
 
+import com.educacionIT.peliculas.controlador.dto.request.PeliculaDtoRequest;
+import com.educacionIT.peliculas.controlador.dto.request.PersonajeDtoRequest;
+import com.educacionIT.peliculas.controlador.dto.response.PeliculaDtoResponse;
 import com.educacionIT.peliculas.controlador.dto.response.PersonajeDtoResponse;
 import com.educacionIT.peliculas.controlador.mapper.MapperPersonaje;
+import com.educacionIT.peliculas.core.dominio.PeliculaSerie;
 import com.educacionIT.peliculas.core.dominio.Personaje;
 import com.educacionIT.peliculas.core.service.PersonajeService;
 import lombok.AllArgsConstructor;
@@ -40,6 +44,12 @@ public class PersonajeController {
                                                           @RequestParam(name = "hasta") Integer edadHasta) {
         List<Personaje> personajes = personajeService.findBetweenAge(edadDesde, edadHasta);
         return mapperPersonaje.toDto(personajes);
+    }
+
+    @PostMapping
+    PersonajeDtoResponse guardarPersonaje(@RequestBody PersonajeDtoRequest personajeDtoRequest) {
+        Personaje personaje = personajeService.save(mapperPersonaje.toDominio(personajeDtoRequest));
+        return mapperPersonaje.toDto(personaje);
     }
 
 }

@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 @Data
@@ -51,6 +52,10 @@ public class PeliculaSerieEntity {
     }
 
     public static List<PeliculaSerie> toDomain(List<PeliculaSerieEntity> peliculaSerieEntities) {
+        if (peliculaSerieEntities == null) {
+            return Collections.emptyList();
+        }
+
         return peliculaSerieEntities.stream().map(PeliculaSerieEntity::toDomain).toList();
     }
 

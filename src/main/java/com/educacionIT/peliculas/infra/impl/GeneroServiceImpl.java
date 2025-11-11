@@ -20,4 +20,10 @@ public class GeneroServiceImpl implements GeneroService {
         List<GeneroEntity> generoEntities = generoJPARepository.findAll();
         return GeneroEntity.toDomain(generoEntities);
     }
+
+    @Override
+    public Genero save(Genero genero) {
+        GeneroEntity savedEntity = generoJPARepository.save(GeneroEntity.toEntity(genero));
+        return GeneroEntity.toDomain(savedEntity);
+    }
 }
