@@ -29,5 +29,4 @@ public class GeneroController {
         Genero genero = generoService.save(mapperGenero.toDominio(generoDtoRequest));
         return mapperGenero.toDto(genero);
     }
-
 }

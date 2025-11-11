@@ -49,7 +49,7 @@ public class PeliculaSerieServiceImpl implements PeliculaSerieService {
 
     @Override
     public PeliculaSerie save(PeliculaSerie peliculaSerie) {
-        peliculaJPARepository.save(PeliculaSerieEntity.toEntity(peliculaSerie));
-        return peliculaSerie;
+        PeliculaSerieEntity peliculaSerieEntity = peliculaJPARepository.save(PeliculaSerieEntity.toEntity(peliculaSerie));
+        return PeliculaSerieEntity.toDomain(peliculaSerieEntity);
     }
 }

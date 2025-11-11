@@ -14,6 +14,7 @@ public class MapperPersonaje {
 
     public PersonajeDtoResponse toDto(Personaje personaje){
         return PersonajeDtoResponse.builder()
+                .id(personaje.getId())
                 .nombre(personaje.getNombre())
                 .edad(personaje.getEdad())
                 .peso(personaje.getPeso())

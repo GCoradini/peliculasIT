@@ -44,6 +44,7 @@ public class PeliculaSerieEntity {
 
     public static PeliculaSerie toDomain(PeliculaSerieEntity peliculaSerieEntity) {
         return PeliculaSerie.builder()
+                .id(peliculaSerieEntity.getId())
                 .titulo(peliculaSerieEntity.getTitulo())
                 .calificacion(peliculaSerieEntity.getCalificacion())
                 .fechaCreacion(peliculaSerieEntity.getFechaCreacion())
@@ -60,6 +61,10 @@ public class PeliculaSerieEntity {
     }
 
     private static List<Personaje> mapearPersonajes(List<PersonajeEntity> personajesEntity) {
+        if (personajesEntity == null) {
+            return Collections.emptyList();
+        }
+
         return personajesEntity.stream()
                 .map(PersonajeEntity::toDomain)
                 .toList();

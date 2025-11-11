@@ -26,6 +26,7 @@ public class MapperPelicula {
 
     public PeliculaDtoResponse toDto(PeliculaSerie peliculaSerie) {
         return PeliculaDtoResponse.builder()
+                .id(peliculaSerie.getId())
                 .titulo(peliculaSerie.getTitulo())
                 .calificacion(peliculaSerie.getCalificacion())
                 .fechaCreacion(peliculaSerie.getFechaCreacion())

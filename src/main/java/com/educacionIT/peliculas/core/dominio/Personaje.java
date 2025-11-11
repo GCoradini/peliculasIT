@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Personaje {
 
+    private Long id;
     private String nombre;
     private Integer edad;
     private Double peso;

@@ -6,6 +6,7 @@ import lombok.Data;
 @Data
 @Builder
 public class PersonajeDtoResponse {
+    private Long id;
     private String nombre;
     private Integer edad;
     private Double peso;

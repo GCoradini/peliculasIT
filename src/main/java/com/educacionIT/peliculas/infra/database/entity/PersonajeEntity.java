@@ -33,6 +33,7 @@ public class PersonajeEntity {
 
     public static Personaje toDomain(PersonajeEntity personajeEntity) {
         return Personaje.builder()
+                .id(personajeEntity.getId())
                 .nombre(personajeEntity.getNombre())
                 .edad(personajeEntity.getEdad())
                 .peso(personajeEntity.getPeso())

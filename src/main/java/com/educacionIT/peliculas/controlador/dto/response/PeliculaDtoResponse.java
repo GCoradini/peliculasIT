@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 @Builder
 public class PeliculaDtoResponse {
+    private Long id;
     private String titulo;
     private LocalDate fechaCreacion;
     private Byte calificacion;

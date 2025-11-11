@@ -47,7 +47,7 @@ public class PersonajeServiceImpl implements PersonajeService {
 
     @Override
     public Personaje save(Personaje personaje) {
-        personajeJPARepository.save(PersonajeEntity.toEntity(personaje));
-        return personaje;
+        PersonajeEntity personajeEntity = personajeJPARepository.save(PersonajeEntity.toEntity(personaje));
+        return PersonajeEntity.toDomain(personajeEntity);
     }
 }
