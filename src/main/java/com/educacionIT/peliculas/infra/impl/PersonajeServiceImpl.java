@@ -4,6 +4,7 @@ import com.educacionIT.peliculas.core.dominio.Personaje;
 import com.educacionIT.peliculas.core.service.PersonajeService;
 import com.educacionIT.peliculas.infra.database.entity.PersonajeEntity;
 import com.educacionIT.peliculas.infra.database.repository.PersonajeJPARepository;
+import com.educacionIT.peliculas.infra.exception.PersonajeNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,14 @@ public class PersonajeServiceImpl implements PersonajeService {
         log.info("Obtengo todos los personajes");
         List<PersonajeEntity> personajeEntities = personajeJPARepository.findAll();
         return PersonajeEntity.toDomain(personajeEntities);
+    }
+
+    @Override
+    public Personaje findById(Long id) {
+        log.info("Obtengo el personaje con id: {}", id);
+        PersonajeEntity personajeEntity = personajeJPARepository.findById(id)
+                .orElseThrow(() -> new PersonajeNotFoundException("No se encontro el personaje con id: " + id));
+        return PersonajeEntity.toDomain(personajeEntity);
     }
 
     @Override

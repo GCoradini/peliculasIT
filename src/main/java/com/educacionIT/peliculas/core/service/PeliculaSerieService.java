@@ -10,6 +10,8 @@ public interface PeliculaSerieService {
 
     List<PeliculaSerie> findAll();
 
+    PeliculaSerie findById(Long id);
+
     PeliculaSerie findByTitulo(String titulo);
 
     List<PeliculaSerie> findByGenero(String genero);

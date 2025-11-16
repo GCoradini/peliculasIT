@@ -7,6 +7,8 @@ public interface PersonajeService {
 
     List<Personaje> findAll();
 
+    Personaje findById(Long id);
+
     Personaje findByName(String nombre);
 
     List<Personaje> findByAge(Integer edad);

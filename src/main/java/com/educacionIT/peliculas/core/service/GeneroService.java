@@ -7,5 +7,7 @@ public interface GeneroService {
 
     List<Genero> findAll();
 
+    Genero findById(Long id);
+
     Genero save(Genero genero);
 }

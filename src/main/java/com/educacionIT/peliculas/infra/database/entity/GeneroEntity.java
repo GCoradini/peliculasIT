@@ -40,6 +40,7 @@ public class GeneroEntity {
 
     public static GeneroEntity toEntity(Genero genero) {
         return GeneroEntity.builder()
+                .id(genero.getId())
                 .nombre(genero.getNombre())
                 .build();
     }

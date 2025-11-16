@@ -57,4 +57,17 @@ public class PeliculasController {
         return mapperPelicula.toDto(peliculaSerie);
     }
 
+    @PutMapping("{id}")
+    PeliculaDtoResponse actualizarPelicula(
+            @PathVariable Long id,
+            @RequestBody PeliculaDtoRequest peliculaDtoRequest) {
+        peliculaSerieService.findById(id);
+
+        PeliculaSerie peliculaSerie = mapperPelicula.toDominio(peliculaDtoRequest);
+        peliculaSerie.setId(id);
+
+        PeliculaSerie peliculaSerieActualizada = peliculaSerieService.save(peliculaSerie);
+        return mapperPelicula.toDto(peliculaSerieActualizada);
+    }
+
 }

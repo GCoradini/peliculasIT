@@ -72,6 +72,7 @@ public class PeliculaSerieEntity {
 
     public static PeliculaSerieEntity toEntity(PeliculaSerie peliculaSerie) {
         return PeliculaSerieEntity.builder()
+                .id(peliculaSerie.getId())
                 .titulo(peliculaSerie.getTitulo())
                 .calificacion(peliculaSerie.getCalificacion())
                 .fechaCreacion(peliculaSerie.getFechaCreacion())

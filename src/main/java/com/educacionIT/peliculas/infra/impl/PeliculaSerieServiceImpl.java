@@ -4,9 +4,9 @@ import com.educacionIT.peliculas.core.dominio.PeliculaSerie;
 import com.educacionIT.peliculas.core.service.PeliculaSerieService;
 import com.educacionIT.peliculas.infra.database.entity.PeliculaSerieEntity;
 import com.educacionIT.peliculas.infra.database.repository.PeliculaJPARepository;
+import com.educacionIT.peliculas.infra.exception.PeliculaNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,6 +20,13 @@ public class PeliculaSerieServiceImpl implements PeliculaSerieService {
     public List<PeliculaSerie> findAll() {
         List<PeliculaSerieEntity> peliculaSeries = peliculaJPARepository.findAll();
         return PeliculaSerieEntity.toDomain(peliculaSeries);
+    }
+
+    @Override
+    public PeliculaSerie findById(Long id) {
+        PeliculaSerieEntity peliculaSerie = peliculaJPARepository.findById(id)
+                .orElseThrow(() -> new PeliculaNotFoundException("No se encontro la pelicula con id: " + id));
+        return PeliculaSerieEntity.toDomain(peliculaSerie);
     }
 
     @Override

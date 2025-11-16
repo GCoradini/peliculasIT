@@ -29,4 +29,17 @@ public class GeneroController {
         Genero genero = generoService.save(mapperGenero.toDominio(generoDtoRequest));
         return mapperGenero.toDto(genero);
     }
+
+    @PutMapping("{id}")
+    GeneroDtoResponse actualizarGenero(
+            @PathVariable Long id,
+            @RequestBody GeneroDtoRequest generoDtoRequest) {
+        generoService.findById(id);
+
+        Genero genero = mapperGenero.toDominio(generoDtoRequest);
+        genero.setId(id);
+
+        Genero generoActualizado = generoService.save(genero);
+        return mapperGenero.toDto(generoActualizado);
+    }
 }

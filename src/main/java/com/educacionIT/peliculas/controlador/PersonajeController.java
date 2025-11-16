@@ -1,16 +1,12 @@
 package com.educacionIT.peliculas.controlador;
 
-import com.educacionIT.peliculas.controlador.dto.request.PeliculaDtoRequest;
 import com.educacionIT.peliculas.controlador.dto.request.PersonajeDtoRequest;
-import com.educacionIT.peliculas.controlador.dto.response.PeliculaDtoResponse;
 import com.educacionIT.peliculas.controlador.dto.response.PersonajeDtoResponse;
 import com.educacionIT.peliculas.controlador.mapper.MapperPersonaje;
-import com.educacionIT.peliculas.core.dominio.PeliculaSerie;
 import com.educacionIT.peliculas.core.dominio.Personaje;
 import com.educacionIT.peliculas.core.service.PersonajeService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -52,4 +48,16 @@ public class PersonajeController {
         return mapperPersonaje.toDto(personaje);
     }
 
+    @PutMapping("{id}")
+    PersonajeDtoResponse actualizarPersonaje(
+            @PathVariable Long id,
+            @RequestBody PersonajeDtoRequest personajeDtoRequest) {
+        personajeService.findById(id);
+
+        Personaje personaje = mapperPersonaje.toDominio(personajeDtoRequest);
+        personaje.setId(id);
+
+        Personaje personajeActualizado = personajeService.save(personaje);
+        return mapperPersonaje.toDto(personajeActualizado);
+    }
 }

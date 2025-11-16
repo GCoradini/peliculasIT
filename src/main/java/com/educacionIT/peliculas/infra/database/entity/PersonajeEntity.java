@@ -47,6 +47,7 @@ public class PersonajeEntity {
 
     public static PersonajeEntity toEntity(Personaje personaje) {
         return PersonajeEntity.builder()
+                .id(personaje.getId())
                 .nombre(personaje.getNombre())
                 .edad(personaje.getEdad())
                 .peso(personaje.getPeso())
